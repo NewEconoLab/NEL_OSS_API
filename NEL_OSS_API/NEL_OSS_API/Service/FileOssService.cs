@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using NEL.helper;
-using NEL_OSS_API;
+﻿using NEL.helper;
+using NEL_Common;
+using NEL_OSS_API.RPC;
 using System;
 
-namespace FileService.Controllers
+namespace NEL_OSS_API.Service
 {
     public class FileOssService
     {
@@ -94,7 +94,7 @@ namespace FileService.Controllers
         
         private string getTmpFileName(string filename)
         {
-            return "tmp_" + filename;
+            return "temp_" + filename;
         }
 
         private FileOssRes newFailedRes(String code, String errMsg)

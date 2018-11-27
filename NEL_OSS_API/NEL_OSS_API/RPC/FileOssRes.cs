@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileService.Controllers
+namespace NEL_OSS_API.RPC
 {
     public class FileOssRes
     {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NEL.helper;
 using System;
 
-namespace NEL_OSS_API
+namespace NEL_Common
 {
     public class Config
     {

@@ -1,11 +1,12 @@
 ﻿using Aliyun.OSS;
+using NEL_OSS_API.RPC;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FileService.Controllers
+namespace NEL_OSS_API.Service
 {
     public class FileOssClient
     {

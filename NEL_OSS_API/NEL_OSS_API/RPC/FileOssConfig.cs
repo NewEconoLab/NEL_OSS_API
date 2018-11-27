@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FileService.Controllers
+﻿
+namespace NEL_OSS_API.RPC
 {
     public class FileOssConfig
     {
