@@ -16,8 +16,6 @@ namespace FileService.Controllers
         
         public string  AccessKeySecret { get; set; }
 
-        public string BucketName_testnet { get; set; }
-
-        public string BucketName_mainnet { get; set; }
+        public string BucketName { get; set; }
     }
 }

@@ -18,23 +18,15 @@ namespace FileService.Controllers
         /// 对象存储存储空间
         /// </summary>
         private string bucketName;
-
-        public FileOssClient(FileOssConfig config) : this(config, "testnet") { }
         
-        public FileOssClient(FileOssConfig config, string network)
+        public FileOssClient(FileOssConfig config)
         {
             string endpoint = config.Endpoint;
             string accessKeyId = config.AccessKeyId;
             string accessKeySecret = config.AccessKeySecret;
             client = new OssClient(endpoint, accessKeyId, accessKeySecret);
 
-            if("mainnet" == network)
-            {
-                bucketName = config.BucketName_mainnet; // 主网bucket
-            } else
-            {
-                bucketName = config.BucketName_testnet; // 测试bucket
-            }
+            bucketName = config.BucketName;
             
             try
             {
@@ -60,23 +52,15 @@ namespace FileService.Controllers
             
         }
 
-        public string PutObject(string type, string version, string content)
-        {
-            return PutObject(getKey(type, version), content);
-        }
+        
         public string PutObject(string filename, string content)
         {
             byte[] binaryData = Encoding.ASCII.GetBytes(content);
             var stream = new MemoryStream(binaryData);
             client.PutObject(bucketName, filename, stream);
             return "true";
-
         }
-
-        public string GetObject(string type, string version)
-        {
-            return GetObject(bucketName, getKey(type, version));
-        }
+        
         public string GetObject(string filename)
         {
             StringBuilder sb = new StringBuilder();
@@ -93,7 +77,27 @@ namespace FileService.Controllers
                 }
             }
             return sb.ToString();
+        }
 
+        public string CopyObject(string sourceObject, string targetObject)
+        {
+            client.CopyObject(new CopyObjectRequest(bucketName, sourceObject, bucketName, targetObject) { NewObjectMetadata = new ObjectMetadata() });
+            return "true";
+        }
+
+        public string DeleteObject(string filename)
+        {
+            client.DeleteObject(bucketName, filename);
+            return "true";
+        }
+        
+        public string PutObject(string type, string version, string content)
+        {
+            return PutObject(getKey(type, version), content);
+        }
+        public string GetObject(string type, string version)
+        {
+            return GetObject(bucketName, getKey(type, version));
         }
 
         public string GetVersion(string type)

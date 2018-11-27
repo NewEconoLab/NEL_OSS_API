@@ -27,12 +27,17 @@ namespace FileService.Controllers
             return client.ossDownload(req);
             //return new FileOssRes("0002", "download-res", "");
         }
-
-        private FileOssService client;
-        public TestnetController(IOptions<FileOssConfig> setting)
+        [HttpPost("oss/store")]
+        public FileOssRes ossStore([FromBody] FileOssReq req)
         {
-            Console.WriteLine("TestController init");
-            client = new FileOssService(setting, "testnet");
+            return client.ossStore(req);
         }
+        [HttpPost("oss/delete")]
+        public FileOssRes ossDelete([FromBody] FileOssReq req)
+        {
+            return client.ossDelete(req);
+        }
+
+        private FileOssService client = FileOssService.getInstance();
     }
 }

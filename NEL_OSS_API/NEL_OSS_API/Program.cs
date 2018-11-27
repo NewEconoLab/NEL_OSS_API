@@ -23,7 +23,7 @@ namespace NEL_OSS_API
                 .UseStartup<Startup>()
                 .UseKestrel(options =>
                 {
-                    options.Listen(IPAddress.Any, 84);
+                    options.Listen(IPAddress.Any, Config.getAppPort());
                 })
                 .Build();
     }

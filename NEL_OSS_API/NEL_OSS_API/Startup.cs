@@ -14,9 +14,11 @@ namespace NEL_OSS_API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+
+            Configuration = Config.loadConfig(env);
         }
 
         public IConfiguration Configuration { get; }
