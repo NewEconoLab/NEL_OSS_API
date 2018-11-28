@@ -35,7 +35,7 @@ namespace NEL_Common
             int port = 0;
             try
             {
-                appPort = int.Parse(config["appPort"].ToString());
+                port = int.Parse(config["appPort"].ToString());
             } catch (Exception)
             {
             }

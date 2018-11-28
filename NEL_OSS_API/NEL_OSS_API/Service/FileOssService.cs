@@ -59,7 +59,7 @@ namespace NEL_OSS_API.Service
             if (string.IsNullOrEmpty(fileName)) return newFailedRes(RespCode.FILE_OP_SERVICE_IllegalParameter, "参数不能为空(fileName)");
 
             string sourceObject = fileName;
-            string targetObject = fileName.Substring(4);
+            string targetObject = fileName.Substring(5);
             string res = "false";
             try
             {
