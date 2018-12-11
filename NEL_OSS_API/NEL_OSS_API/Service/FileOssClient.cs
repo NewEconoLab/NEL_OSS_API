@@ -56,7 +56,7 @@ namespace NEL_OSS_API.Service
         
         public string PutObject(string filename, string content)
         {
-            byte[] binaryData = Encoding.ASCII.GetBytes(content);
+            byte[] binaryData = Encoding.UTF8.GetBytes(content);
             var stream = new MemoryStream(binaryData);
             client.PutObject(bucketName, filename, stream);
             return "true";
@@ -74,7 +74,7 @@ namespace NEL_OSS_API.Service
                 {
                     length = requestStream.Read(buf, 0, length);
                     if (length == 0) break;
-                    sb.Append(Encoding.ASCII.GetString(buf.Take(length).ToArray()));
+                    sb.Append(Encoding.UTF8.GetString(buf.Take(length).ToArray()));
                 }
             }
             return sb.ToString();
